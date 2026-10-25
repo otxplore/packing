@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111318">
+<title>OTXS Packing Checklist | Discover and Explore</title>
+<meta name="description" content="Create, save, and share packing checklists for travel, road trips, hiking, and outdoor adventures.">
+<style>
+:root{
+  --bg:#111318;--panel:#191c23;--panel2:#222630;--border:#303541;
+  --text:#f4f5f7;--muted:#a4aab7;--orange:#ff9d32;--yellow:#ffd166;
+  --green:#56d6a0;--red:#ff7777;--radius:17px
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+header{padding:17px max(16px,calc((100% - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,var(--yellow),var(--orange));color:#191919;font-weight:950;font-size:22px}
+.brand-name{font-weight:900;letter-spacing:.7px}
+.brand-sub{font-size:12px;color:var(--muted)}
+.header-link{font-size:13px;color:var(--muted);text-decoration:none}
+main{max-width:1080px;margin:auto;padding:28px 16px 55px}
+.eyebrow{color:var(--orange);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:850}
+h1{font-size:clamp(30px,4.5vw,43px);line-height:1.15;letter-spacing:-1.2px;margin:7px 0}
+h2{font-size:17px;margin:0}
+p{margin-top:0}
+.muted{color:var(--muted)}
+.hero{margin-bottom:23px}
+.hero p{max-width:650px;color:var(--muted);margin:8px 0 0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:17px;align-items:start}
+.stack{display:grid;gap:17px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;min-width:0}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.tag{border:1px solid #624a2d;background:#30271e;color:var(--yellow);padding:5px 9px;border-radius:20px;font-size:10px;letter-spacing:.6px;font-weight:800;white-space:nowrap}
+label{display:block;font-size:12px;color:var(--muted);font-weight:750;margin-bottom:6px}
+input,select,textarea{width:100%;background:#11141a;border:1px solid var(--border);border-radius:10px;padding:11px 12px;color:var(--text);min-width:0}
+input::placeholder,textarea::placeholder{color:#777e8c}
+.field{margin-bottom:13px}
+.row{display:flex;gap:10px}
+.row>*{flex:1;min-width:0}
+.btn{border:1px solid var(--border);border-radius:10px;padding:10px 13px;background:var(--panel2);color:var(--text);font-weight:750;font-size:13px}
+.btn:hover{filter:brightness(1.12)}
+.btn-primary{background:linear-gradient(135deg,var(--yellow),var(--orange));border-color:transparent;color:#171717}
+.btn-danger{color:var(--red)}
+.btn-small{padding:6px 9px;font-size:12px}
+.full{width:100%}
+.templates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.template{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--border);border-radius:12px;background:#ffffff03;color:var(--text);padding:12px}
+.template:hover{border-color:#87602e;background:#30271e}
+.template-icon{font-size:24px}
+.template strong{display:block;font-size:13px}
+.template small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.check-progress{height:7px;border-radius:10px;background:#303541;overflow:hidden;margin:10px 0 7px}
+.check-progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--orange));transition:width .2s}
+.progress-text{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted)}
+.category{margin-top:19px}
+.category:first-child{margin-top:0}
+.category-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;font-weight:850}
+.category-count{font-size:11px;color:var(--muted);font-weight:600}
+.item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #ffffff0b}
+.item:last-child{border-bottom:0}
+.item input[type=checkbox]{width:18px;height:18px;margin:2px 0 0;accent-color:var(--orange);flex:0 0 auto}
+.item-main{flex:1;min-width:0}
+.item-name{font-size:13px;overflow-wrap:anywhere}
+.item.checked .item-name{text-decoration:line-through;color:var(--muted)}
+.item-note{font-size:11px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.item-actions{display:flex;gap:3px;flex:0 0 auto}
+.icon-btn{border:0;background:transparent;color:var(--muted);padding:3px 5px;border-radius:6px;font-size:14px}
+.icon-btn:hover{background:var(--panel2);color:var(--text)}
+.empty{border:1px dashed #414753;border-radius:12px;padding:22px 12px;text-align:center;color:var(--muted);font-size:13px}
+.saved-list{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--border);padding:12px 0}
+.saved-list:last-child{border-bottom:0}
+.saved-name{font-size:13px;font-weight:800;overflow-wrap:anywhere}
+.saved-meta{font-size:11px;color:var(--muted);margin-top:3px}
+.saved-actions{display:flex;gap:5px;flex-shrink:0}
+.check-row{display:flex;align-items:center;gap:9px;margin:10px 0;font-size:13px;color:var(--muted)}
+.check-row input{width:17px;height:17px;accent-color:var(--orange)}
+.notice{font-size:11px;color:var(--muted);margin-top:12px}
+.status{font-size:12px;min-height:17px;color:var(--muted);margin-top:10px}
+.status.success{color:var(--green)}
+.status.error{color:var(--red)}
+footer{text-align:center;padding-top:30px;font-size:12px;color:var(--muted)}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{order:2}}
+@media(max-width:480px){
+ header{align-items:flex-start}.header-link{display:none}
+ main{padding:22px 12px 40px}.card{padding:15px}
+ .templates{grid-template-columns:1fr 1fr}.template{padding:10px 8px;gap:7px}
+ .template-icon{font-size:21px}.template strong{font-size:12px}
+ .row{gap:7px}.btn{padding:9px 10px}
+}
+@media print{
+ header,.hero,.no-print,footer{display:none!important}
+ body{background:#fff;color:#111}
+ main{padding:0;max-width:none}
+ .layout{display:block}
+ .card{background:#fff;color:#111;border-color:#ccc;margin-bottom:12px;break-inside:avoid}
+ input,select,textarea{border:0;color:#111;background:#fff;padding:2px}
+ .item{border-bottom:1px solid #ddd}
+ .item-note,.muted,.progress-text,.category-count,.saved-meta{color:#555}
+ .check-progress{border:1px solid #aaa}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">✓</div>
+    <div>
+      <div class="brand-name">OTXS <span style="color:var(--orange)">PACKING</span></div>
+      <div class="brand-sub">Pack smart. Explore more.</div>
+    </div>
+  </div>
+  <a class="header-link" href="https://otxs.de">← Back to OTXS</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">OTXS · Travel tools</div>
+    <h1>Ready to go.<br><span style="color:var(--orange)">Nothing left behind.</span></h1>
+    <p>Build your packing list for road trips, weekend getaways, hiking, and longer adventures. Check items off as you pack.</p>
+  </section>
+
+  <div class="layout">
+    <div class="stack">
+      <section class="card">
+        <div class="card-head">
+          <h2>Create a checklist</h2>
+          <span class="tag">NEW LIST</span>
+        </div>
+        <div class="field">
+          <label for="tripName">Trip or checklist name</label>
+          <input id="tripName" maxlength="100" placeholder="e.g. Solan weekend ride" value="My travel checklist">
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="tripDate">Departure date</label>
+            <input id="tripDate" type="date">
+          </div>
+          <div class="field">
+            <label for="traveller">Traveller</label>
+            <input id="traveller" maxlength="60" placeholder="e.g. Sagar">
+          </div>
+        </div>
+        <div class="field">
+          <label>Start with a template</label>
+          <div class="templates">
+            <button type="button" class="template" data-template="general">
+              <span class="template-icon">🎒</span><span><strong>General travel</strong><small>Essentials for any trip</small></span>
+            </button>
+            <button type="button" class="template" data-template="road">
+              <span class="template-icon">🛣️</span><span><strong>Road trip</strong><small>Travel and vehicle gear</small></span>
+            </button>
+            <button type="button" class="template" data-template="hiking">
+              <span class="template-icon">⛰️</span><span><strong>Hiking & outdoors</strong><small>Trail-ready essentials</small></span>
+            </button>
+            <button type="button" class="template" data-template="weekend">
+              <span class="template-icon">🌄</span><span><strong>Weekend getaway</strong><small>Short-trip packing</small></span>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="newListBtn">Create new list</button>
+          <button type="button" class="btn" id="saveBtn">Save current list</button>
+        </div>
+        <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Your packing progress</h2>
+          <span class="tag" id="progressBadge">0 ITEMS</span>
+        </div>
+        <div class="progress-text">
+          <span id="progressLabel">Nothing packed yet</span>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <div class="check-progress"><div id="progressBar"></div></div>
+        <div class="row no-print" style="margin-top:15px">
+          <button class="btn" type="button" id="printBtn">Print checklist</button>
+          <button class="btn" type="button" id="exportBtn">Export JSON</button>
+          <button class="btn" type="button" id="shareBtn">Share</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Checklist items</h2>
+          <span class="tag" id="itemCount">0 ITEMS</span>
+        </div>
+        <div class="row no-print">
+          <div class="field" style="flex:2">
+            <label for="newItem">Add an item</label>
+            <input id="newItem" maxlength="120" placeholder="e.g. Phone charger">
+          </div>
+          <div class="field">
+            <label for="newCategory">Category</label>
+            <select id="newCategory">
+              <option>Essentials</option>
+              <option>Clothing</option>
+              <option>Toiletries</option>
+              <option>Electronics</option>
+              <option>Travel gear</option>
+              <option>Health & safety</option>
+              <option>Food & water</option>
+              <option>Documents</option>
+              <option>Custom</option>
+            </select>
+          </div>
+        </div>
+        <div class="field no-print">
+          <label for="itemNote">Note (optional)</label>
+          <input id="itemNote" maxlength="200" placeholder="e.g. Keep in the side pocket">
+        </div>
+        <button class="btn btn-primary full no-print" type="button" id="addItemBtn">+ Add item</button>
+        <div id="checklist" style="margin-top:20px"></div>
+        <div class="row no-print" style="margin-top:18px">
+          <button class="btn" type="button" id="uncheckAllBtn">Uncheck all</button>
+          <button class="btn" type="button" id="removePackedBtn">Remove packed items</button>
+        </div>
+      </section>
+    </div>
+
+    <aside class="stack sidebar">
+      <section class="card">
+        <div class="card-head">
+          <h2>Saved checklists</h2>
+          <span class="tag">ON THIS DEVICE</span>
+        </div>
+        <div id="savedLists"></div>
+        <p class="notice">Lists are saved in this browser only. Clearing browser storage or switching devices may remove or hide them.</p>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>Import a checklist</h2></div>
+        <p class="muted" style="font-size:12px">Restore a checklist exported from OTXS Packing as a JSON file.</p>
+        <label for="importFile">Choose JSON file</label>
+        <input id="importFile" type="file" accept=".json,application/json">
+        <button type="button" class="btn full" id="importBtn" style="margin-top:10px">Import checklist</button>
+        <div class="status" id="importStatus" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>Before you leave</h2></div>
+        <label class="check-row"><input type="checkbox"> Check weather forecast</label>
+        <label class="check-row"><input type="checkbox"> Confirm bookings and route</label>
+        <label class="check-row"><input type="checkbox"> Charge phone and power bank</label>
+        <label class="check-row"><input type="checkbox"> Check travel documents</label>
+        <label class="check-row"><input type="checkbox"> Secure home before leaving</label>
+        <p class="notice">These reminders are separate from your saved packing checklist.</p>
+      </section>
+    </aside>
+  </div>
+
+  <footer>OTXS Packing · Discover and Explore · Your checklist stays in your browser</footer>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const STORAGE_KEY = "otxs_packing_lists_v1";
+  const ACTIVE_KEY = "otxs_packing_active_v1";
+  const MAX_ITEMS = 1000;
+  const MAX_LISTS = 100;
+
+  const templates = {
+    general: [
+      ["Essentials","Wallet and cash",""],
+      ["Documents","ID or passport","Check destination requirements"],
+      ["Documents","Tickets and booking details",""],
+      ["Electronics","Mobile phone",""],
+      ["Electronics","Phone charger",""],
+      ["Clothing","Clothes for each day",""],
+      ["Clothing","Underwear and socks",""],
+      ["Clothing","Comfortable footwear",""],
+      ["Toiletries","Toothbrush and toothpaste",""],
+      ["Toiletries","Personal toiletries",""],
+      ["Health & safety","Personal medication",""],
+      ["Travel gear","Water bottle",""],
+      ["Travel gear","Day bag",""]
+    ],
+    road: [
+      ["Documents","Driving licence",""],
+      ["Documents","Vehicle documents and insurance",""],
+      ["Essentials","Wallet and emergency cash",""],
+      ["Electronics","Mobile phone and charger",""],
+      ["Electronics","Power bank",""],
+      ["Travel gear","Navigation or offline maps",""],
+      ["Travel gear","Water and snacks",""],
+      ["Travel gear","Sunglasses",""],
+      ["Clothing","Weather-appropriate clothing",""],
+      ["Health & safety","First-aid kit",""],
+      ["Health & safety","Emergency contact details",""],
+      ["Travel gear","Torch or flashlight",""],
+      ["Travel gear","Rain protection",""],
+      ["Travel gear","Vehicle-specific emergency kit","Check your vehicle manual"]
+    ],
+    hiking: [
+      ["Travel gear","Comfortable hiking shoes",""],
+      ["Travel gear","Backpack",""],
+      ["Food & water","Water and refill bottle",""],
+      ["Food & water","Trail snacks",""],
+      ["Clothing","Weather-appropriate layers",""],
+      ["Clothing","Rain jacket",""],
+      ["Health & safety","First-aid kit",""],
+      ["Health & safety","Personal medication",""],
+      ["Health & safety","Sun protection",""],
+      ["Electronics","Charged phone",""],
+      ["Electronics","Power bank",""],
+      ["Travel gear","Torch or headlamp",""],
+      ["Travel gear","Offline map or route details",""],
+      ["Documents","ID and emergency contacts",""]
+    ],
+    weekend: [
+      ["Essentials","Wallet and ID",""],
+      ["Documents","Booking confirmations",""],
+      ["Clothing","Two sets of clothes","Adjust to the trip"],
+      ["Clothing","Sleepwear",""],
+      ["Clothing","Comfortable footwear",""],
+      ["Toiletries","Toothbrush and toothpaste",""],
+      ["Toiletries","Personal toiletries",""],
+      ["Electronics","Phone charger",""],
+      ["Electronics","Power bank",""],
+      ["Health & safety","Personal medication",""],
+      ["Travel gear","Water bottle",""],
+      ["Travel gear","Small day bag",""],
+      ["Clothing","Weather-appropriate outer layer",""]
+    ]
+  };
+
+  let lists = loadLists();
+  let activeId = localStorage.getItem(ACTIVE_KEY) || "";
+  let activeList = null;
+
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2,9);
+  }
+
+  function loadLists() {
+    try {
+      const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return Array.isArray(value) ? value.slice(0, MAX_LISTS) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function storeLists() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(lists));
+      if (activeList) localStorage.setItem(ACTIVE_KEY, activeList.id);
+      return true;
+    } catch {
+      setStatus("formStatus","Could not save to browser storage. Your browser may be out of space.","error");
+      return false;
+    }
+  }
+
+  function setStatus(id, message, type = "") {
+    const el = $(id);
+    el.className = "status" + (type ? " " + type : "");
+    el.textContent = message;
+  }
+
+  function makeItem(category, name, note = "", packed = false) {
+    return {id:uid(),category,name,note,packed:Boolean(packed)};
+  }
+
+  function makeList(name, date = "", traveller = "", items = []) {
+    return {
+      id:uid(),
+      name:name.trim() || "My checklist",
+      date,
+      traveller:traveller.trim(),
+      items,
+      updatedAt:new Date().toISOString()
+    };
+  }
+
+  function ensureActiveList() {
+    if (!activeList) {
+      activeList = makeList("My travel checklist");
+      lists.unshift(activeList);
+      activeId = activeList.id;
+      storeLists();
+    }
+    return activeList;
+  }
+
+  function updateActiveList() {
+    if (!activeList) return;
+    activeList.name = $("tripName").value.trim() || "My checklist";
+    activeList.date = $("tripDate").value;
+    activeList.traveller = $("traveller").value.trim();
+    activeList.updatedAt = new Date().toISOString();
+  }
+
+  function persistActive() {
+    updateActiveList();
+    const index = lists.findIndex(l => l.id === activeList.id);
+    if (index >= 0) lists[index] = activeList;
+    else lists.unshift(activeList);
+    lists = lists.slice(0, MAX_LISTS);
+    storeLists();
+    renderSavedLists();
+  }
+
+  function loadActive(list) {
+    activeList = list;
+    activeId = list.id;
+    $("tripName").value = list.name || "";
+    $("tripDate").value = list.date || "";
+    $("traveller").value = list.traveller || "";
+    localStorage.setItem(ACTIVE_KEY, activeId);
+    renderChecklist();
+    renderSavedLists();
+    setStatus("formStatus","Opened “" + list.name + "”.","success");
+  }
+
+  function createFromTemplate(key) {
+    const template = templates[key];
+    if (!template) return;
+    const items = template.map(([category,name,note]) => makeItem(category,name,note));
+    const list = makeList($("tripName").value.trim() || "My " + key + " checklist",
+      $("tripDate").value, $("traveller").value, items);
+    lists.unshift(list);
+    lists = lists.slice(0, MAX_LISTS);
+    loadActive(list);
+    storeLists();
+    setStatus("formStatus","Checklist created with " + items.length + " suggested items.","success");
+  }
+
+  function createBlankList() {
+    const name = $("tripName").value.trim() || "My travel checklist";
+    const list = makeList(name,$("tripDate").value,$("traveller").value,[]);
+    lists.unshift(list);
+    lists = lists.slice(0, MAX_LISTS);
+    loadActive(list);
+    storeLists();
+    setStatus("formStatus","New checklist created.","success");
+  }
+
+  function addItem() {
+    const name = $("newItem").value.trim();
+    if (!name) {
+      setStatus("formStatus","Enter an item name first.","error");
+      $("newItem").focus();
+      return;
+    }
+    ensureActiveList();
+    if (activeList.items.length >= MAX_ITEMS) {
+      setStatus("formStatus","This checklist has reached the item limit.","error");
+      return;
+    }
+
+    activeList.items.push(makeItem(
+      $("newCategory").value,
+      name,
+      $("itemNote").value.trim()
+    ));
+    $("newItem").value = "";
+    $("itemNote").value = "";
+    persistActive();
+    renderChecklist();
+    setStatus("formStatus","Item added.","success");
+    $("newItem").focus();
+  }
+
+  function renderChecklist() {
+    const area = $("checklist");
+    area.replaceChildren();
+    if (!activeList) {
+      area.innerHTML = '<div class="empty">Create a checklist or choose a template to get started.</div>';
+      updateProgress();
+      return;
+    }
+
+    const items = activeList.items || [];
+    const categories = [...new Set(items.map(i => i.category || "Custom"))];
+
+    if (!items.length) {
+      area.innerHTML = '<div class="empty">Your checklist is empty. Add items above or select a template.</div>';
+      updateProgress();
+      return;
+    }
+
+    categories.forEach(category => {
+      const section = document.createElement("section");
+      section.className = "category";
+      const categoryItems = items.filter(i => (i.category || "Custom") === category);
+      const packedCount = categoryItems.filter(i => i.packed).length;
+
+      const heading = document.createElement("div");
+      heading.className = "category-title";
+      const title = document.createElement("span");
+      title.textContent = category;
+      const count = document.createElement("span");
+      count.className = "category-count";
+      count.textContent = packedCount + " / " + categoryItems.length + " packed";
+      heading.append(title,count);
+      section.appendChild(heading);
+
+      categoryItems.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "item" + (item.packed ? " checked" : "");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = Boolean(item.packed);
+        checkbox.setAttribute("aria-label","Mark " + item.name + " packed");
+        checkbox.addEventListener("change",() => {
+          item.packed = checkbox.checked;
+          persistActive();
+          renderChecklist();
+        });
+
+        const body = document.createElement("div");
+        body.className = "item-main";
+        const name = document.createElement("div");
+        name.className = "item-name";
+        name.textContent = item.name;
+        body.appendChild(name);
+
+        if (item.note) {
+          const note = document.createElement("div");
+          note.className = "item-note";
+          note.textContent = item.note;
+          body.appendChild(note);
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "item-actions no-print";
+
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.className = "icon-btn";
+        edit.title = "Edit item";
+        edit.setAttribute("aria-label","Edit " + item.name);
+        edit.textContent = "✎";
+        edit.addEventListener("click",() => editItem(item));
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "icon-btn";
+        remove.title = "Remove item";
+        remove.setAttribute("aria-label","Remove " + item.name);
+        remove.textContent = "×";
+        remove.addEventListener("click",() => {
+          activeList.items = activeList.items.filter(i => i.id !== item.id);
+          persistActive();
+          renderChecklist();
+        });
+
+        actions.append(edit,remove);
+        row.append(checkbox,body,actions);
+        section.appendChild(row);
+      });
+
+      area.appendChild(section);
+    });
+
+    updateProgress();
+  }
+
+  function editItem(item) {
+    const newName = prompt("Edit item name:",item.name);
+    if (newName === null) return;
+    const cleanName = newName.trim();
+    if (!cleanName) {
+      alert("The item name cannot be empty.");
+      return;
+    }
+    const newNote = prompt("Edit note (optional):",item.note || "");
+    if (newNote === null) return;
+    const newCategory = prompt(
+      "Category (e.g. Clothing, Documents, Electronics):",
+      item.category || "Custom"
+    );
+    if (newCategory === null) return;
+
+    item.name = cleanName.slice(0,120);
+    item.note = newNote.trim().slice(0,200);
+    item.category = newCategory.trim().slice(0,60) || "Custom";
+    persistActive();
+    renderChecklist();
+  }
+
+  function updateProgress() {
+    const items = activeList?.items || [];
+    const total = items.length;
+    const packed = items.filter(i => i.packed).length;
+    const percent = total ? Math.round(packed / total * 100) : 0;
+    $("progressBadge").textContent = total + " ITEM" + (total === 1 ? "" : "S");
+    $("itemCount").textContent = total + " ITEM" + (total === 1 ? "" : "S");
+    $("progressLabel").textContent = total ? packed + " of " + total + " packed" : "Nothing packed yet";
+    $("progressPercent").textContent = percent + "%";
+    $("progressBar").style.width = percent + "%";
+  }
+
+  function renderSavedLists() {
+    const area = $("savedLists");
+    area.replaceChildren();
+    if (!lists.length) {
+      area.innerHTML = '<div class="empty">No saved checklists yet. Create a list to see it here.</div>';
+      return;
+    }
+
+    lists.forEach(list => {
+      const row = document.createElement("div");
+      row.className = "saved-list";
+      const body = document.createElement("div");
+      body.style.minWidth = "0";
+      const name = document.createElement("div");
+      name.className = "saved-name";
+      name.textContent = list.name || "Untitled checklist";
+      const meta = document.createElement("div");
+      meta.className = "saved-meta";
+      const items = list.items || [];
+      const packed = items.filter(i => i.packed).length;
+      meta.textContent = items.length + " items · " + packed + " packed" + (list.date ? " · " + list.date : "");
+      body.append(name,meta);
+
+      const actions = document.createElement("div");
+      actions.className = "saved-actions";
+
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "btn btn-small";
+      open.textContent = list.id === activeId ? "Active" : "Open";
+      open.disabled = list.id === activeId;
+      open.addEventListener("click",() => loadActive(list));
+
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "btn btn-small btn-danger";
+      remove.textContent = "×";
+      remove.title = "Delete checklist";
+      remove.setAttribute("aria-label","Delete " + list.name);
+      remove.addEventListener("click",() => {
+        if (!confirm('Delete the checklist "' + list.name + '"?')) return;
+        lists = lists.filter(l => l.id !== list.id);
+        if (activeId === list.id) {
+          activeList = null;
+          activeId = "";
+          if (lists.length) loadActive(lists[0]);
+          else {
+            localStorage.removeItem(ACTIVE_KEY);
+            $("tripName").value = "My travel checklist";
+            $("tripDate").value = "";
+            $("traveller").value = "";
+            renderChecklist();
+          }
+        }
+        storeLists();
+        renderSavedLists();
+      });
+
+      actions.append(open,remove);
+      row.append(body,actions);
+      area.appendChild(row);
+    });
+  }
+
+  function exportCurrent() {
+    if (!activeList) {
+      setStatus("formStatus","Create a checklist before exporting.","error");
+      return;
+    }
+    updateActiveList();
+    const blob = new Blob([JSON.stringify({
+      app:"OTXS Packing Checklist",
+      version:1,
+      exportedAt:new Date().toISOString(),
+      checklist:activeList
+    },null,2)],{type:"application/json"});
+    downloadBlob(blob,slug(activeList.name) + "-packing.json");
+  }
+
+  function downloadBlob(blob,filename) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url),1000);
+  }
+
+  function slug(value) {
+    return (value || "packing-checklist")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g,"-")
+      .replace(/^-|-$/g,"")
+      .slice(0,60) || "packing-checklist";
+  }
+
+  async function shareCurrent() {
+    if (!activeList) {
+      setStatus("formStatus","Create a checklist before sharing.","error");
+      return;
+    }
+    updateActiveList();
+    const items = activeList.items || [];
+    const packed = items.filter(i => i.packed).length;
+    const lines = [
+      "OTXS Packing Checklist: " + activeList.name,
+      activeList.date ? "Departure: " + activeList.date : "",
+      activeList.traveller ? "Traveller: " + activeList.traveller : "",
+      "Progress: " + packed + "/" + items.length + " packed",
+      ""
+    ];
+
+    const categories = [...new Set(items.map(i => i.category || "Custom"))];
+    categories.forEach(category => {
+      lines.push(category + ":");
+      items.filter(i => (i.category || "Custom") === category).forEach(item => {
+        lines.push((item.packed ? "[x] " : "[ ] ") + item.name + (item.note ? " — " + item.note : ""));
+      });
+      lines.push("");
+    });
+
+    const text = lines.filter((line,index) => line !== "" || lines[index - 1] !== "").join("\n");
+    try {
+      if (navigator.share) {
+        await navigator.share({title:activeList.name,text});
+        setStatus("formStatus","Share sheet opened.","success");
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+        setStatus("formStatus","Checklist copied. Paste it into a message to share.","success");
+      } else {
+        exportCurrent();
+        setStatus("formStatus","Sharing is unavailable here, so the checklist was exported instead.","warning");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        setStatus("formStatus","Could not share the checklist. Try exporting it as JSON.","error");
+      }
+    }
+  }
+
+  async function importCurrent() {
+    const file = $("importFile").files?.[0];
+    if (!file) {
+      setStatus("importStatus","Choose a JSON file first.","error");
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      setStatus("importStatus","File is too large. Maximum size is 2 MB.","error");
+      return;
+    }
+
+    try {
+      const data = JSON.parse(await file.text());
+      const candidate = data.checklist || data;
+      if (!candidate || typeof candidate !== "object" || !Array.isArray(candidate.items)) {
+        throw new Error("This file does not contain a valid OTXS checklist.");
+      }
+      if (candidate.items.length > MAX_ITEMS) {
+        throw new Error("The checklist contains too many items.");
+      }
+
+      const cleanItems = candidate.items.map(item => {
+        if (!item || typeof item.name !== "string" || !item.name.trim()) {
+          throw new Error("An item in this file is invalid.");
+        }
+        return makeItem(
+          typeof item.category === "string" ? item.category.slice(0,60) : "Custom",
+          item.name.trim().slice(0,120),
+          typeof item.note === "string" ? item.note.slice(0,200) : "",
+          Boolean(item.packed)
+        );
+      });
+
+      const list = makeList(
+        typeof candidate.name === "string" ? candidate.name.slice(0,100) : "Imported checklist",
+        typeof candidate.date === "string" ? candidate.date.slice(0,10) : "",
+        typeof candidate.traveller === "string" ? candidate.traveller.slice(0,60) : "",
+        cleanItems
+      );
+      lists.unshift(list);
+      lists = lists.slice(0,MAX_LISTS);
+      loadActive(list);
+      storeLists();
+      setStatus("importStatus","Checklist imported successfully.","success");
+      $("importFile").value = "";
+    } catch (error) {
+      setStatus("importStatus",error.message || "Could not import this file.","error");
+    }
+  }
+
+  $("newListBtn").addEventListener("click",createBlankList);
+  $("saveBtn").addEventListener("click",() => {
+    ensureActiveList();
+    persistActive();
+    setStatus("formStatus","Checklist saved in this browser.","success");
+  });
+  $("addItemBtn").addEventListener("click",addItem);
+  $("newItem").addEventListener("keydown",event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addItem();
+    }
+  });
+  document.querySelectorAll("[data-template]").forEach(button => {
+    button.addEventListener("click",() => createFromTemplate(button.dataset.template));
+  });
+  $("printBtn").addEventListener("click",() => window.print());
+  $("exportBtn").addEventListener("click",exportCurrent);
+  $("shareBtn").addEventListener("click",shareCurrent);
+  $("importBtn").addEventListener("click",importCurrent);
+
+  $("uncheckAllBtn").addEventListener("click",() => {
+    if (!activeList) return;
+    activeList.items.forEach(item => item.packed = false);
+    persistActive();
+    renderChecklist();
+    setStatus("formStatus","All items unchecked.","success");
+  });
+
+  $("removePackedBtn").addEventListener("click",() => {
+    if (!activeList) return;
+    const packed = activeList.items.filter(item => item.packed).length;
+    if (!packed) {
+      setStatus("formStatus","There are no packed items to remove.","warning");
+      return;
+    }
+    if (!confirm("Remove " + packed + " packed item(s) from this checklist?")) return;
+    activeList.items = activeList.items.filter(item => !item.packed);
+    persistActive();
+    renderChecklist();
+    setStatus("formStatus","Packed items removed.","success");
+  });
+
+  ["tripName","tripDate","traveller"].forEach(id => {
+    $(id).addEventListener("change",() => {
+      if (!activeList) return;
+      persistActive();
+    });
+  });
+
+  // Restore the last active checklist, or start with a clean checklist.
+  const previous = lists.find(list => list.id === activeId);
+  if (previous) {
+    loadActive(previous);
+  } else if (lists.length) {
+    loadActive(lists[0]);
+  } else {
+    activeList = makeList("My travel checklist");
+    activeId = activeList.id;
+    $("tripName").value = activeList.name;
+    renderChecklist();
+    renderSavedLists();
+  }
+})();
+</script>
+</body>
+</html>
+
